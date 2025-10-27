@@ -20,7 +20,7 @@ const result = document.getElementById('result');
 
 let myName = '';
 let oppName = '';
-let role = ''; // 'me' or 'opp'
+let role = '';
 let roundCount = 0;
 
 const emojiMap = {
@@ -29,7 +29,7 @@ const emojiMap = {
     '보': '✋'
 };
 
-// 1. 시작 버튼
+
 startBtn.addEventListener('click', function () {
     myName = myNameInput.value.trim() || '나';
     oppName = oppNameInput.value.trim() || '상대';
@@ -41,7 +41,7 @@ startBtn.addEventListener('click', function () {
     chooseOppBtn.textContent = oppName;
 });
 
-// 2. 질문 선택
+
 chooseMeBtn.addEventListener('click', function () {
     role = 'me';
     localStorage.setItem('role', role);
@@ -56,7 +56,7 @@ chooseOppBtn.addEventListener('click', function () {
     gameSelectScreen.classList.remove('hidden');
 });
 
-// 3. 게임 선택 화면
+
 rpsGameBtn.addEventListener('click', function () {
     gameSelectScreen.classList.add('hidden');
     gameScreen.classList.remove('hidden');
@@ -65,7 +65,7 @@ rpsGameBtn.addEventListener('click', function () {
     showInitialScreen();
 });
 
-// 4. 초기 화면
+
 function showInitialScreen() {
     gameText.innerHTML = `${myName} : <br><br>${oppName} :`;
     result.textContent = '';
@@ -73,7 +73,6 @@ function showInitialScreen() {
     homeBtn.classList.add('hidden');
 }
 
-// 5. 플레이 버튼 (가위바위보)
 playBtn.addEventListener('click', function () {
     let myPick, oppPick;
     const choices = ['가위', '바위', '보'];
@@ -114,7 +113,7 @@ playBtn.addEventListener('click', function () {
     checkResult(myPick, oppPick);
 });
 
-// 6. 결과 판정
+
 function checkResult(myPick, oppPick) {
     result.textContent = '';
     playBtn.style.display = 'inline-block';
@@ -148,7 +147,6 @@ function checkResult(myPick, oppPick) {
     }
 }
 
-// 7. 승/패 스타일
 function applyWinLoseStyle() {
     const loseSpan = result.querySelector('.lose');
     if (loseSpan) {
@@ -168,14 +166,14 @@ function applyWinLoseStyle() {
     result.style.textAlign = 'center';
 }
 
-// 8. 홈 버튼
+
 homeBtn.addEventListener('click', function () {
     gameScreen.classList.add('hidden');
     gameSelectScreen.classList.remove('hidden');
     roundCount = 0;
 });
 
-// 9. 초기화
+
 function restartAfter(time) {
     setTimeout(() => {
         showInitialScreen();

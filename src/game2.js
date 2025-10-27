@@ -77,13 +77,13 @@ document.addEventListener('DOMContentLoaded', () => {
             cupContainer.appendChild(cup);
         }
 
-        // 구슬을 가운데 컵에 넣고 역회전 적용
+
         const marble = document.createElement('span');
         marble.textContent = '🔮';
         marble.style.opacity = '0.5';
         marble.style.fontSize = '40px';
         marble.style.position = 'absolute';
-        marble.style.transform = 'translate(-3px,50px)'; // 위치 및 역회전
+        marble.style.transform = 'translate(-3px,50px)';
         cupContainer.appendChild(marble);
 
         marbleGameText.appendChild(cupContainer);
@@ -125,10 +125,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function handleCupClick() {
         clickCount++;
 
-        // 덜 사랑하는 사람인지 판단
+
         const isLessLoving = (role === 'me' && starter !== myName) || (role === 'opp' && starter !== oppName);
 
-        // 덜 사랑하는 사람 3번째 클릭에서 무조건 찾기
+
         if (isLessLoving && clickCount === 3) {
             marbleResult.innerHTML = `찾았다! 🔮`;
             marbleFound = true;
