@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>사랑하면 지는 거래</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            padding: 0 10px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        button {
+            margin: 10px;
+            padding: 14px 20px;
+            cursor: pointer;
+            font-size: 19px;
+            width: 80%;
+            max-width: 300px;
+        }
+
+        input {
+            width: 80%;
+            max-width: 300px;
+            padding: 10px;
+            margin: 8px 0;
+            font-size: 16px;
+        }
+
+        /* 다음 게임 / 구슬 버튼 */
+        #nextBtn,
+        #startMarbleBtn,
+        #homeBtn {
+            margin-top: 20px;
+            padding: 14px 20px;
+            font-size: 19px;
+            width: 80%;
+            max-width: 300px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 1. 닉네임 입력 화면 -->
+    <div id="startScreen">
+        <h1>💗사랑하면 지는 거래💗</h1>
+        <p>닉네임을 입력하세요</p>
+        <input type="text" id="myName" placeholder="나의 닉네임"><br>
+        <input type="text" id="oppName" placeholder="상대 닉네임"><br>
+        <button id="startBtn">시작</button>
+    </div>
+
+    <!-- 2. 질문 화면 -->
+    <div id="questionScreen" class="hidden">
+        <h2>누가 더 사랑하나요?</h2>
+        <button id="chooseMeBtn"></button>
+        <button id="chooseOppBtn"></button>
+    </div>
+
+    <!-- 3. 게임 선택 화면 -->
+    <div id="gameSelectScreen" class="hidden">
+        <h2>원하는 게임을 선택하세요</h2>
+        <button id="rpsGameBtn">가위 바위 보 게임</button>
+        <button id="marbleGameBtn">구슬 찾기 게임</button>
+    </div>
+
+    <!-- 4. 게임 화면 -->
+    <div id="gameScreen" class="hidden">
+
+        <!-- 가위바위보 전용 컨테이너 -->
+        <div id="rpsContainer">
+            <h3 id="gameText"></h3>
+            <button id="playBtn">가위 바위 보!</button>
+            <button id="nextBtn" class="hidden">다음 게임</button>
+            <button id="startMarbleBtn" class="hidden">구슬 찾기 게임 시작!</button>
+            <button id="homeBtn" class="hidden">홈으로</button>
+            <div id="result" style="margin-top:20px;font-weight:bold;"></div>
+        </div>
+
+        <!-- 구슬 찾기 전용 컨테이너 -->
+        <div id="marbleContainer" class="hidden">
+            <h3 id="marbleGameText"></h3>
+            <div id="marbleResult" style="margin-top:20px;font-weight:bold;"></div>
+        </div>
+
+    </div>
+
+    <!-- JS 파일 연결 -->
+    <script src="src/game.js" defer></script>
+    <script src="src/game2.js" defer></script>
+
+</body>
+
+</html>
