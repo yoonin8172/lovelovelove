@@ -125,27 +125,29 @@ function checkResult(myPick, oppPick) {
     }
 
     if (role === 'me') {
-        if (oppPick === '보') {
-            result.textContent = '..다시 해보자!';
-            restartAfter(3000);
-        } else if (oppPick === '바위') {
-            result.innerHTML = `${myName} : <span class="win">승!</span> ${oppName} : <span class="lose">패</span>`;
-            applyWinLoseStyle();
-            playBtn.style.display = 'none';
-            homeBtn.classList.remove('hidden');
-        }
-    } else {
-        if (myPick === '보') {
-            result.textContent = '..다시 해보자!';
-            restartAfter(3000);
-        } else if (myPick === '바위') {
+
+        if (oppPick === '바위') {
             result.innerHTML = `${myName} : <span class="lose">패</span> ${oppName} : <span class="win">승!</span>`;
             applyWinLoseStyle();
             playBtn.style.display = 'none';
             homeBtn.classList.remove('hidden');
+        } else {
+            result.textContent = '..다시 해보자!';
+            restartAfter(3000);
+        }
+    } else {
+        if (myPick === '바위') {
+            result.innerHTML = `${myName} : <span class="win">승!</span> ${oppName} : <span class="lose">패</span>`;
+            applyWinLoseStyle();
+            playBtn.style.display = 'none';
+            homeBtn.classList.remove('hidden');
+        } else {
+            result.textContent = '..다시 해보자!';
+            restartAfter(3000);
         }
     }
 }
+
 
 function applyWinLoseStyle() {
     const loseSpan = result.querySelector('.lose');
