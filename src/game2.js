@@ -16,6 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('rpsContainer').classList.add('hidden');
         marbleContainer.classList.remove('hidden');
 
+        document.body.style.backgroundColor = '#c2c2f9ff';
+
         startMarbleGame();
     });
 
@@ -46,6 +48,12 @@ document.addEventListener('DOMContentLoaded', () => {
         marbleGameText.innerHTML = '';
         marbleResult.textContent = '';
 
+        const infoText = document.createElement('div');
+        infoText.textContent = '구슬이 있는 컵은 무엇일까요?';
+        infoText.style.textAlign = 'center';
+        infoText.style.marginBottom = '20px';
+        marbleGameText.appendChild(infoText);
+
         const cupContainer = document.createElement('div');
         cupContainer.style.position = 'relative';
         cupContainer.style.display = 'flex';
@@ -66,11 +74,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (i === 0 || i === 2) {
                 cup.addEventListener('click', () => {
-                    marbleResult.textContent = '땡!';
+                    marbleResult.textContent = '땡 ! (어째서 ... 분명 보였는데?!)';
                     setTimeout(() => {
                         marbleResult.textContent = '';
                         showCupsSecondRound();
-                    }, 1000);
+                    }, 2500);
                 });
             }
 
@@ -127,8 +135,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const isLessLoving = (role === 'me' && starter !== myName) || (role === 'opp' && starter !== oppName);
 
         if (isLessLoving && clickCount === 3) {
-            marbleResult.innerHTML = `찾았다! 🔮`;
             marbleFound = true;
+            showFoundText();
             showEndButton();
             return;
         }
@@ -141,12 +149,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const rand = Math.random();
         if (rand < 0.2) {
-            marbleResult.textContent = '..진짜 다시 골라봐;';
+            marbleResult.textContent = '..다시 골라봐';
             disableCupsTemporarily(2500);
         } else {
-            marbleResult.innerHTML = `찾았다! 🔮`;
             marbleFound = true;
+            showFoundText();
             showEndButton();
+        }
+    }
+
+    function showFoundText() {
+        marbleResult.innerHTML = `찾았다! 🔮`;
+        marbleResult.style.textAlign = 'center';
+        marbleResult.style.fontSize = '24px';
+        marbleResult.style.fontWeight = 'bold';
+        if (marbleGameText.querySelector('button')) {
+            marbleGameText.insertBefore(marbleResult, marbleGameText.querySelector('button'));
+        } else {
+            marbleGameText.appendChild(marbleResult);
         }
     }
 
@@ -172,12 +192,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         endBtn.addEventListener('click', () => {
             marbleContainer.classList.add('hidden');
-            gameScreen.classList.add('hidden');           // ← 게임 화면 숨기기
-            gameSelectScreen.classList.remove('hidden'); // ← 게임 선택 화면으로 이동
+            gameScreen.classList.add('hidden');
+            gameSelectScreen.classList.remove('hidden');
+            document.body.style.backgroundColor = '';
             marbleResult.textContent = '';
             marbleGameText.textContent = '';
             endBtn.remove();
         });
     }
-
 });

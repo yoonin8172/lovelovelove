@@ -29,7 +29,6 @@ const emojiMap = {
     '보': '✋'
 };
 
-
 startBtn.addEventListener('click', function () {
     myName = myNameInput.value.trim() || '나';
     oppName = oppNameInput.value.trim() || '상대';
@@ -40,7 +39,6 @@ startBtn.addEventListener('click', function () {
     chooseMeBtn.textContent = myName;
     chooseOppBtn.textContent = oppName;
 });
-
 
 chooseMeBtn.addEventListener('click', function () {
     role = 'me';
@@ -56,18 +54,21 @@ chooseOppBtn.addEventListener('click', function () {
     gameSelectScreen.classList.remove('hidden');
 });
 
-
 rpsGameBtn.addEventListener('click', function () {
     gameSelectScreen.classList.add('hidden');
     gameScreen.classList.remove('hidden');
     document.getElementById('rpsContainer').classList.remove('hidden');
     document.getElementById('marbleContainer').classList.add('hidden');
+
+    document.body.style.backgroundColor = '#a8dff5ff';
     showInitialScreen();
 });
 
-
 function showInitialScreen() {
-    gameText.innerHTML = `${myName} : <br><br>${oppName} :`;
+    gameText.innerHTML = `
+        ${myName} : <span style="font-size:60px;"> </span><br><br>
+        ${oppName} : <span style="font-size:60px;"></span>
+    `;
     result.textContent = '';
     playBtn.style.display = 'inline-block';
     homeBtn.classList.add('hidden');
@@ -81,8 +82,8 @@ playBtn.addEventListener('click', function () {
         myPick = '가위';
         oppPick = '가위';
         roundCount++;
-        gameText.innerHTML = `${myName} : ${emojiMap[myPick]}<br><br>${oppName} : ${emojiMap[oppPick]}`;
-        result.textContent = `${myName} : 무승부네!`;
+        gameText.innerHTML = `${myName} : <span style="font-size:60px;">${emojiMap[myPick]}</span><br><br>${oppName} : <span style="font-size:60px;">${emojiMap[oppPick]}</span>`;
+        result.textContent = `${myName} : 헉! 역시 우린 천생연분?! 무승부네!`;
         restartAfter(2500);
         return;
     }
@@ -96,8 +97,8 @@ playBtn.addEventListener('click', function () {
             oppPick = '가위';
         }
         roundCount++;
-        gameText.innerHTML = `${myName} : ${emojiMap[myPick]}<br><br>${oppName} : ${emojiMap[oppPick]}`;
-        result.textContent = '..다시 해보자!';
+        gameText.innerHTML = `${myName} : <span style="font-size:60px;">${emojiMap[myPick]}</span><br><br>${oppName} : <span style="font-size:60px;">${emojiMap[oppPick]}</span>`;
+        result.textContent = '큼... 다시 해보자!';
         restartAfter(3000);
         return;
     }
@@ -109,10 +110,9 @@ playBtn.addEventListener('click', function () {
         myPick = choices[Math.floor(Math.random() * 3)];
         oppPick = '가위';
     }
-    gameText.innerHTML = `${myName} : ${emojiMap[myPick]}<br><br>${oppName} : ${emojiMap[oppPick]}`;
+    gameText.innerHTML = `${myName} : <span style="font-size:60px;">${emojiMap[myPick]}</span><br><br>${oppName} : <span style="font-size:60px;">${emojiMap[oppPick]}</span>`;
     checkResult(myPick, oppPick);
 });
-
 
 function checkResult(myPick, oppPick) {
     result.textContent = '';
@@ -125,29 +125,27 @@ function checkResult(myPick, oppPick) {
     }
 
     if (role === 'me') {
-
         if (oppPick === '바위') {
-            result.innerHTML = `${myName} : <span class="lose">패</span> ${oppName} : <span class="win">승!</span>`;
+            result.innerHTML = `${myName} : <span class="lose">패</span> ${oppName} : <span class="win">승!</span><br><br>(아무래도..더 조아하는 쪽이 늘 질 수밖에 없는 탓일까...?)`;
             applyWinLoseStyle();
             playBtn.style.display = 'none';
             homeBtn.classList.remove('hidden');
         } else {
-            result.textContent = '..다시 해보자!';
+            result.textContent = '음...ㅎㅎ 다시 해볼까?';
             restartAfter(3000);
         }
     } else {
         if (myPick === '바위') {
-            result.innerHTML = `${myName} : <span class="win">승!</span> ${oppName} : <span class="lose">패</span>`;
+            result.innerHTML = `${myName} : <span class="win">승!</span> ${oppName} : <span class="lose">패</span><br><br>(아무래도..더 조아하는 쪽이 늘 질 수밖에 없는 탓일까...?)`;
             applyWinLoseStyle();
             playBtn.style.display = 'none';
             homeBtn.classList.remove('hidden');
         } else {
-            result.textContent = '..다시 해보자!';
+            result.textContent = '큼.. 다시 해볼까?';
             restartAfter(3000);
         }
     }
 }
-
 
 function applyWinLoseStyle() {
     const loseSpan = result.querySelector('.lose');
@@ -168,13 +166,13 @@ function applyWinLoseStyle() {
     result.style.textAlign = 'center';
 }
 
-
 homeBtn.addEventListener('click', function () {
     gameScreen.classList.add('hidden');
     gameSelectScreen.classList.remove('hidden');
     roundCount = 0;
-});
 
+    document.body.style.backgroundColor = '#FFFFFF';
+});
 
 function restartAfter(time) {
     setTimeout(() => {
