@@ -5,21 +5,52 @@
     <meta charset="UTF-8">
     <title>사랑하면 지는 거래</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- ✅ 폰트 + 글자 통일 + 원래 구조 유지 -->
     <style>
+        @font-face {
+            font-family: 'AvieSehyun';
+            src: url('https://gcore.jsdelivr.net/gh/projectnoonnu/noonfonts_five@.2.0/UhBeeSe_hyun.woff') format('woff');
+            font-weight: normal;
+            font-display: swap;
+        }
+
         body {
-            font-family: sans-serif;
+            font-family: 'AvieSehyun', sans-serif;
             text-align: center;
             margin-top: 50px;
             padding: 0 10px;
         }
+
+        h1 {
+            font-size: 29px;
+            /* 타이틀 크기 줄임 */
+            color: #e646d3;
+            /* 원하면 색상도 변경 가능 */
+            margin-bottom: 40px;
+            margin-top: 90px;
+        }
+
+
+
 
         .hidden {
             display: none;
         }
 
         button {
+            font-family: 'AvieSehyun', sans-serif;
             margin: 10px;
             padding: 14px 20px;
+            border: 2px solid black;
+            /* 테두리 검정색 */
+            /* 모서리 약간 둥글게, 필요 없으면 0px */
+            background-color: white;
+            /* 배경 흰색 */
+
+            /* ✅ 글자 색상 검정 */
+            color: black;
+
             cursor: pointer;
             font-size: 19px;
             width: 80%;
@@ -27,38 +58,37 @@
         }
 
         input {
+            font-family: 'AvieSehyun', sans-serif;
             width: 80%;
             max-width: 300px;
             padding: 10px;
-            margin: 8px 0;
+            margin: 8px 0 20px 0;
             font-size: 16px;
         }
 
-
-        #nextBtn,
-        #startMarbleBtn,
         #homeBtn {
             margin-top: 20px;
-            padding: 14px 20px;
-            font-size: 19px;
-            width: 80%;
-            max-width: 300px;
-            cursor: pointer;
         }
     </style>
 </head>
 
 <body>
 
-
     <div id="startScreen">
         <h1>💗사랑하면 지는 거래💗</h1>
-        <p>닉네임을 입력하세요</p>
+        <p>사랑은... 하면 안 되는 거였어.<br>
+            근데 왜 너만 보면... 심장이 자꾸 나대는 걸까?<br>
+            이 게임의 룰은 하나야.<br>
+            사랑하면... 지는 거야.♥<br><br></p>
+
         <input type="text" id="myName" placeholder="나의 닉네임"><br>
         <input type="text" id="oppName" placeholder="상대 닉네임"><br>
+
+
+
+
         <button id="startBtn">시작</button>
     </div>
-
 
     <div id="questionScreen" class="hidden">
         <h2>누가 더 사랑하나요?</h2>
@@ -66,23 +96,19 @@
         <button id="chooseOppBtn"></button>
     </div>
 
-
     <div id="gameSelectScreen" class="hidden">
         <h2>원하는 게임을 선택하세요</h2>
         <button id="rpsGameBtn">가위 바위 보 게임</button>
         <button id="marbleGameBtn">구슬 찾기 게임</button>
+        <button id="petalGameBtn">꽃잎 세기 게임</button>
     </div>
-
 
     <div id="gameScreen" class="hidden">
 
-
-        <div id="rpsContainer">
+        <div id="rpsContainer" class="hidden">
             <h3 id="gameText"></h3>
             <button id="playBtn">가위 바위 보!</button>
-            <button id="nextBtn" class="hidden">다음 게임</button>
-            <button id="startMarbleBtn" class="hidden">구슬 찾기 게임 시작!</button>
-            <button id="homeBtn" class="hidden">홈으로</button>
+            <button id="homeBtn" class="hidden">돌아가기</button>
             <div id="result" style="margin-top:20px;font-weight:bold;"></div>
         </div>
 
@@ -91,11 +117,20 @@
             <div id="marbleResult" style="margin-top:20px;font-weight:bold;"></div>
         </div>
 
+        <div id="petalContainer" class="hidden">
+            <h3 id="petalText"></h3>
+            <button id="petalStartBtn">게임 시작</button>
+            <div id="petalArea" style="margin-top:25px;font-size:80px;"></div>
+            <div id="petalResult" style="margin-top:20px;font-weight:bold;"></div>
+            <button id="petalHomeBtn" class="hidden">돌아가기</button>
+        </div>
+
     </div>
 
-
+    <!-- ✅ JS 3개 그대로 -->
     <script src="src/game.js" defer></script>
     <script src="src/game2.js" defer></script>
+    <script src="src/game3.js" defer></script>
 
 </body>
 

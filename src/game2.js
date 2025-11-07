@@ -77,7 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
             cupContainer.appendChild(cup);
         }
 
-
         const marble = document.createElement('span');
         marble.textContent = '🔮';
         marble.style.opacity = '0.5';
@@ -95,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
         clickCount = 0;
 
         const infoText = document.createElement('div');
-        infoText.textContent = '이번에는 상대의 차례입니다.';
+        infoText.textContent = '다음사람의 차례입니다.';
         infoText.style.textAlign = 'center';
         infoText.style.marginBottom = '20px';
         marbleGameText.appendChild(infoText);
@@ -125,9 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function handleCupClick() {
         clickCount++;
 
-
         const isLessLoving = (role === 'me' && starter !== myName) || (role === 'opp' && starter !== oppName);
-
 
         if (isLessLoving && clickCount === 3) {
             marbleResult.innerHTML = `찾았다! 🔮`;
@@ -164,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function showEndButton() {
         const endBtn = document.createElement('button');
-        endBtn.textContent = '끝내기';
+        endBtn.textContent = '돌아가기';
         endBtn.style.display = 'block';
         endBtn.style.margin = '30px auto';
         endBtn.style.padding = '10px 20px';
@@ -175,7 +172,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         endBtn.addEventListener('click', () => {
             marbleContainer.classList.add('hidden');
-            startScreen.classList.remove('hidden');
+            gameScreen.classList.add('hidden');           // ← 게임 화면 숨기기
+            gameSelectScreen.classList.remove('hidden'); // ← 게임 선택 화면으로 이동
             marbleResult.textContent = '';
             marbleGameText.textContent = '';
             endBtn.remove();
