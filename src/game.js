@@ -85,7 +85,7 @@ playBtn.addEventListener('click', function () {
         gameText.innerHTML = `${myName} : <span style="font-size:60px;">${emojiMap[myPick]}</span><br><br>${oppName} : <span style="font-size:60px;">${emojiMap[oppPick]}</span>`;
         result.textContent = `${myName} : 헉! 역시 우린 천생연분?! 무승부네! 
         (⋆◗̑◡◗̑)⸝♡⃛⸜(◖̑◡◖̑⋆) (천천히 클릭해주세요)` ;
-        restartAfter(2500);
+        restartAfter(4000);
         return;
     }
 
