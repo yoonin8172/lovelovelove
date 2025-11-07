@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('rpsContainer').classList.add('hidden');
         marbleContainer.classList.remove('hidden');
 
-        document.body.style.backgroundColor = '#c2c2f9ff';
+        document.body.style.backgroundColor = '#d8d8ffff';
 
         startMarbleGame();
     });
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (i === 0 || i === 2) {
                 cup.addEventListener('click', () => {
-                    marbleResult.textContent = '땡 ! (어째서 ... 분명 보였는데?!)';
+                    marbleResult.textContent = '땡 ! (어째서 ... 분명 보였는데?! (⑅ ॣ•͈૦•͈  ॣ))';
                     setTimeout(() => {
                         marbleResult.textContent = '';
                         showCupsSecondRound();
@@ -142,14 +142,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (clickCount <= 2) {
-            marbleResult.textContent = '..다시 골라봐';
+            marbleResult.textContent = '˚✧₊⁎ ᷀ົཽ≀ˍ̮ ᷀ົཽ⁎⁺˳✧..다시 골라봐';
             disableCupsTemporarily(2500);
             return;
         }
 
         const rand = Math.random();
         if (rand < 0.2) {
-            marbleResult.textContent = '..다시 골라봐';
+            marbleResult.textContent = '˚✧₊⁎ ᷀ົཽ≀ˍ̮ ᷀ົཽ⁎⁺˳✧..다시 골라봐';
             disableCupsTemporarily(2500);
         } else {
             marbleFound = true;
@@ -159,7 +159,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function showFoundText() {
-        marbleResult.innerHTML = `찾았다! 🔮`;
+        marbleResult.innerHTML = `찾았다! 🔮 
+     ꒳ᵒ꒳ᵎᵎᵎ`;
         marbleResult.style.textAlign = 'center';
         marbleResult.style.fontSize = '24px';
         marbleResult.style.fontWeight = 'bold';

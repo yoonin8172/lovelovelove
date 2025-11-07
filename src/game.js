@@ -60,7 +60,7 @@ rpsGameBtn.addEventListener('click', function () {
     document.getElementById('rpsContainer').classList.remove('hidden');
     document.getElementById('marbleContainer').classList.add('hidden');
 
-    document.body.style.backgroundColor = '#a8dff5ff';
+    document.body.style.backgroundColor = '#cdedfaff';
     showInitialScreen();
 });
 
@@ -83,7 +83,8 @@ playBtn.addEventListener('click', function () {
         oppPick = '가위';
         roundCount++;
         gameText.innerHTML = `${myName} : <span style="font-size:60px;">${emojiMap[myPick]}</span><br><br>${oppName} : <span style="font-size:60px;">${emojiMap[oppPick]}</span>`;
-        result.textContent = `${myName} : 헉! 역시 우린 천생연분?! 무승부네!`;
+        result.textContent = `${myName} : 헉! 역시 우린 천생연분?! 무승부네! 
+        (⋆◗̑◡◗̑)⸝♡⃛⸜(◖̑◡◖̑⋆) (천천히 클릭해주세요)` ;
         restartAfter(2500);
         return;
     }
@@ -98,7 +99,7 @@ playBtn.addEventListener('click', function () {
         }
         roundCount++;
         gameText.innerHTML = `${myName} : <span style="font-size:60px;">${emojiMap[myPick]}</span><br><br>${oppName} : <span style="font-size:60px;">${emojiMap[oppPick]}</span>`;
-        result.textContent = '큼... 다시 해보자!';
+        result.textContent = '큼... 다시 해보자! (ノ ́ヮ ́)ノ';
         restartAfter(3000);
         return;
     }
@@ -126,22 +127,24 @@ function checkResult(myPick, oppPick) {
 
     if (role === 'me') {
         if (oppPick === '바위') {
-            result.innerHTML = `${myName} : <span class="lose">패</span> ${oppName} : <span class="win">승!</span><br><br>(아무래도..더 조아하는 쪽이 늘 질 수밖에 없는 탓일까...?)`;
+            result.innerHTML = `${myName} : <span class="lose">패</span> ${oppName} : <span class="win">승!</span><br><br>(아무래도..더 조아하는 쪽이 늘 질 수밖에 없는 탓일까...?)
+           {•••♥˚₊*(ˊo̶̶̷̤ .̫ o̴̶̷̤ˋ)*₊˚ {•••♥˚₊*(ˊo̶̶̷̤ .̫ o̴̶̷̤ˋ)*₊˚`;
             applyWinLoseStyle();
             playBtn.style.display = 'none';
             homeBtn.classList.remove('hidden');
         } else {
-            result.textContent = '음...ㅎㅎ 다시 해볼까?';
+            result.textContent = '음...ㅎㅎ 다시 해볼까? (ノ ́ヮ ́)ノ';
             restartAfter(3000);
         }
     } else {
         if (myPick === '바위') {
-            result.innerHTML = `${myName} : <span class="win">승!</span> ${oppName} : <span class="lose">패</span><br><br>(아무래도..더 조아하는 쪽이 늘 질 수밖에 없는 탓일까...?)`;
+            result.innerHTML = `${myName} : <span class="win">승!</span> ${oppName} : <span class="lose">패</span><br><br>(아무래도..더 조아하는 쪽이 늘 질 수밖에 없는 탓일까...?) 
+         {•••♥˚₊*(ˊo̶̶̷̤ .̫ o̴̶̷̤ˋ)*₊˚ {•••♥˚₊*(ˊo̶̶̷̤ .̫ o̴̶̷̤ˋ)*₊˚)`;
             applyWinLoseStyle();
             playBtn.style.display = 'none';
             homeBtn.classList.remove('hidden');
         } else {
-            result.textContent = '큼.. 다시 해볼까?';
+            result.textContent = '큼.. 다시 해볼까? (ノ ́ヮ ́)ノ';
             restartAfter(3000);
         }
     }

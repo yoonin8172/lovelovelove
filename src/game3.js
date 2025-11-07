@@ -83,9 +83,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
             if (turnIsLessLoving) {
-                petalResult.textContent = `${lessLoving} 이(가) 더 사랑한다`;
+                petalResult.textContent = `${lessLoving} 이(가) 더 사랑한다...`;
             } else {
-                petalResult.textContent = `${moreLoving} 이(가) 더 사랑한다`;
+                petalResult.textContent = `${moreLoving} 이(가) 더 사랑한다...`;
             }
             turnIsLessLoving = !turnIsLessLoving;
 
@@ -102,7 +102,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (touchCount >= petalTotal) {
                 if (freshEmoji) freshEmoji.style.pointerEvents = 'none';
                 setTimeout(() => {
-                    petalResult.innerHTML = `<div style="font-weight:700; margin-top:8px;">모야 ~ ${moreLoving} 이(가) 더 사랑하는 거 맞자나 ~ <br>꽃잎 개수: ${petalTotal}</div>`;
+                    petalResult.innerHTML = `<div style="font-weight:700; margin-top:8px;">모야 ~ ${moreLoving} 이(가) 더 사랑하는 거 맞자나 ~
+                    ꒰ა ₍ ⁄ᐢ⁄~⁄ᐢ⁄ ₎ ໒꒱ <br>꽃잎 개수: ${petalTotal}</div>`;
                     petalHomeBtn.classList.remove('hidden');
                     petalOpeningBtn.style.display = 'inline-block';
                 }, 700);
